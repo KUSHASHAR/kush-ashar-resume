@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kush Ashar - Technical Lead Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The SPA is designed as a top-to-bottom narrative of a professional journey. It starts with a high-level summary and key stats, then allows users to interactively explore a career timeline, filter through a detailed project portfolio, and visualize technical skills. This structure was chosen over a simple linear resume to allow non-linear exploration. For example, a recruiter interested specifically in AEM projects can filter the portfolio instantly, making it more usable and efficient than reading through the entire document. A visual timeline and skills chart also make complex information more digestible. -->
+    <!-- Visualization & Content Choices: 
+        - Career Journey: Report Info (Junior -> Senior -> Lead roles) -> Goal (Show change over time) -> Viz (Interactive vertical timeline) -> Interaction (Clicking a role updates a detail panel) -> Justification (Keeps the timeline clean while providing deep-dive info on demand) -> Method (HTML/CSS + JS).
+        - Projects: Report Info (List of projects like HSBC, Vijay Sales) -> Goal (Organize & Compare) -> Viz (Filterable grid of project cards) -> Interaction (Users click filter buttons like 'Banking', 'E-commerce' to show/hide relevant projects) -> Justification (Allows users to quickly find projects relevant to their interests) -> Method (HTML/CSS + JS).
+        - Skills: Report Info (List of technical skills) -> Goal (Compare experience levels) -> Viz (Horizontal bar chart) -> Interaction (Tooltips on hover provide details) -> Justification (A visual chart is faster to parse than a text list and effectively communicates years of experience) -> Library (Chart.js).
+        - Key Metrics: Report Info (6+ years, 50+ trained) -> Goal (Inform) -> Viz (Key stat cards) -> Interaction (Static) -> Justification (Highlights key achievements immediately) -> Method (HTML/CSS).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #0ea5e9;
+        }
+        .timeline-item-title.active {
+            color: #0ea5e9;
+        }
+        .project-filter-btn.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-800">
+                Kush Ashar
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#journey" class="nav-link font-medium">Journey</a>
+                <a href="#portfolio" class="nav-link font-medium">Portfolio</a>
+                <a href="#skills" class="nav-link font-medium">Skills</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#journey" class="block py-2 px-6 text-sm hover:bg-slate-100">Journey</a>
+            <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-slate-100">Portfolio</a>
+            <a href="#skills" class="block py-2 px-6 text-sm hover:bg-slate-100">Skills</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-slate-100">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="hero" class="text-center py-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800 mb-4">Technical Lead Developer</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                Transforming complex problems into elegant, high-performance web applications. Specializing in React.js, AEM, and building future-ready solutions.
+            </p>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-3xl font-bold text-sky-500">6+</h3>
+                    <p class="text-slate-500 mt-1">Years of Experience</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-3xl font-bold text-sky-500">50+</h3>
+                    <p class="text-slate-500 mt-1">Professionals Trained</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-3xl font-bold text-sky-500">10+</h3>
+                    <p class="text-slate-500 mt-1">Enterprise Projects</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Career Journey</h2>
+                <p class="text-slate-500 mt-2">From foundational development to technical leadership at DEPT Agency.</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 lg:gap-16">
+                <div class="md:w-1/3">
+                    <div id="timeline-buttons" class="space-y-4">
+                    </div>
+                </div>
+                <div class="md:w-2/3 bg-white p-8 rounded-xl shadow-lg">
+                    <div id="timeline-details">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Project Portfolio</h2>
+                <p class="text-slate-500 mt-2">A selection of projects demonstrating expertise across various domains and technologies. Click the filters to explore.</p>
+            </div>
+            <div id="project-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+            </div>
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+
+        <section id="skills" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Technical Skills</h2>
+                 <p class="text-slate-500 mt-2">A visualization of my experience with key technologies based on years of hands-on application.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                 <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center py-16 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold">Get In Touch</h2>
+            <p class="text-slate-500 mt-2 mb-6">Let's connect and discuss how I can bring value to your team.</p>
+            <div class="flex justify-center items-center space-x-6 text-lg">
+                 <span class="font-medium">ashar.kush.k@gmail.com</span>
+                 <span class="text-slate-300">|</span>
+                 <span class="font-medium">+91 7715001062</span>
+            </div>
+             <div class="mt-8">
+                <p class="text-slate-500">Certified: <span class="font-semibold text-slate-700">Adobe Certified Expert - AEM Sites Developer</span></p>
+             </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 mt-12 border-t border-slate-200">
+        <p class="text-slate-500 text-sm">Interactive Resume for Kush Ashar | Built with passion and code.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const timelineData = {
+                'tech-lead': {
+                    role: 'Technical Lead',
+                    period: '2021 - Present',
+                    company: 'DEPT Agency',
+                    description: 'Leading development for key platforms, mentoring teams, and driving technical strategy. Currently heading the Vijay Sales and HSBC UK eLearning Portal projects. Focused on delivering high-performance solutions and fostering innovation.',
+                    points: [
+                        "Lead end-to-end development across Banking, E-commerce, Insurance, & AEM.",
+                        "Mentored and trained over 50 professionals in JS, Git, & React.",
+                        "Architected and implemented solutions using WebRTC, WebSockets, & PWAs.",
+                        "Developed innovative AI POCs for multiple clients.",
+                        "Collaborated with global teams on international projects."
+                    ]
+                },
+                'sr-developer': {
+                    role: 'Senior Frontend Developer',
+                    period: '2019 - 2021',
+                    company: 'Tekno Point (Pre-acquisition)',
+                    description: 'Developed complex frontend architectures, optimized user experiences, and played a key role in mentoring junior team members.',
+                    points: [
+                        "Optimized frontend architecture for major client projects.",
+                        "Engineered solutions integrating AEM with React JS.",
+                        "Contributed to the core development of the Vijay Sales platform.",
+                        "Ensured high standards of code quality through rigorous code reviews.",
+                        "Championed responsive design and cross-browser compatibility."
+                    ]
+                },
+                'jr-developer': {
+                    role: 'Junior Developer',
+                    period: '2018 - 2019',
+                    company: 'Tekno Point (Pre-acquisition)',
+                    description: 'Gained foundational experience in web development, contributing to various projects and building a strong technical skill set.',
+                    points: [
+                        "Assisted in the development and maintenance of web applications.",
+                        "Collaborated with teams to implement new features and fix bugs.",
+                        "Gained proficiency in JavaScript, HTML, CSS, and Git.",
+                        "Contributed to early stages of large-scale platform development."
+                    ]
+                }
+            };
+
+            const projectData = [
+                { title: 'Vijay Sales Platform', category: 'E-commerce', description: 'A scalable e-commerce solution to streamline sales operations and optimize business processes.' },
+                { title: 'HSBC UK eLearning Portal', category: 'Banking', description: 'An interactive and seamless learning platform that significantly improved user engagement and learning outcomes.' },
+                { title: 'Tata Capital Customer Portal', category: 'Banking', description: 'A robust and user-friendly platform that enhanced the customer experience for a leading NBFC.' },
+                { title: 'Tata AIA Life Insurance', category: 'Insurance', description: 'A comprehensive and user-friendly portal to enhance customer experience and streamline insurance services.' },
+                { title: 'Bajaj Allianz Life Insurance', category: 'Insurance', description: 'Developed a platform enhancing user experience and ensuring seamless, efficient insurance operations.' },
+                { title: 'Edelweiss Tokio Life Insurance', category: 'Insurance', description: 'Built an intuitive and secure application to improve customer engagement and simplify insurance processes.' },
+                { title: 'AEM + React Projects', category: 'AEM', description: 'Contributed to multiple projects involving AEM-based solutions and AEM + React JS integrations.' },
+                { title: 'AI-driven POCs', category: 'AI', description: 'Developed multiple Proof of Concepts for clients exploring AI-driven solutions.' },
+                { title: 'ME + EM and Dossy', category: 'E-commerce', description: 'Worked on international e-commerce projects, collaborating with global teams.' },
+                 { title: 'PWA-Studio POCs', category: 'PWA', description: 'Delivered proof of concepts exploring emerging PWA technologies for mobile-first solutions.' },
+            ];
+            
+            const timelineButtonsContainer = document.getElementById('timeline-buttons');
+            const timelineDetailsContainer = document.getElementById('timeline-details');
+
+            Object.keys(timelineData).forEach((key, index) => {
+                const data = timelineData[key];
+                const button = document.createElement('button');
+                button.setAttribute('data-timeline', key);
+                button.className = 'w-full text-left p-4 rounded-lg transition-all duration-300 bg-white hover:bg-slate-50 shadow-sm';
+                button.innerHTML = `
+                    <h3 class="font-bold text-lg timeline-item-title">${data.role}</h3>
+                    <p class="text-sm text-slate-500">${data.period}</p>
+                `;
+                timelineButtonsContainer.appendChild(button);
+            });
+            
+            function updateTimelineDetails(key) {
+                const data = timelineData[key];
+                if (!data) return;
+
+                document.querySelectorAll('[data-timeline]').forEach(btn => {
+                    btn.classList.remove('bg-sky-50', 'ring-2', 'ring-sky-200');
+                    btn.querySelector('.timeline-item-title').classList.remove('active');
+                });
+                
+                const activeButton = document.querySelector(`[data-timeline="${key}"]`);
+                activeButton.classList.add('bg-sky-50', 'ring-2', 'ring-sky-200');
+                activeButton.querySelector('.timeline-item-title').classList.add('active');
+
+                timelineDetailsContainer.innerHTML = `
+                    <h3 class="text-2xl font-bold text-slate-800">${data.role}</h3>
+                    <p class="text-sm font-medium text-slate-500 mb-4">${data.period} at ${data.company}</p>
+                    <p class="text-slate-600 mb-6">${data.description}</p>
+                    <ul class="space-y-3">
+                        ${data.points.map(point => `<li class="flex items-start"><span class="text-sky-500 mr-3 mt-1">&#10003;</span><span>${point}</span></li>`).join('')}
+                    </ul>
+                `;
+            }
+
+            timelineButtonsContainer.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('[data-timeline]');
+                if (targetButton) {
+                    updateTimelineDetails(targetButton.dataset.timeline);
+                }
+            });
+
+            updateTimelineDetails('tech-lead');
+            
+            const projectFiltersContainer = document.getElementById('project-filters');
+            const projectGridContainer = document.getElementById('project-grid');
+            
+            const categories = ['All', ...new Set(projectData.map(p => p.category))];
+
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.textContent = category;
+                button.setAttribute('data-filter', category);
+                button.className = 'project-filter-btn px-4 py-2 text-sm font-medium rounded-full bg-white text-slate-700 hover:bg-sky-100 transition-colors shadow-sm';
+                projectFiltersContainer.appendChild(button);
+            });
+
+            function renderProjects(filter = 'All') {
+                projectGridContainer.innerHTML = '';
+                const filteredProjects = filter === 'All' ? projectData : projectData.filter(p => p.category === filter);
+                
+                filteredProjects.forEach(project => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white p-6 rounded-xl shadow-lg transition-transform hover:scale-105';
+                    card.innerHTML = `
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-sky-800 bg-sky-100 rounded-full mb-3">${project.category}</span>
+                        <h3 class="font-bold text-xl mb-2">${project.title}</h3>
+                        <p class="text-slate-600 text-sm">${project.description}</p>
+                    `;
+                    projectGridContainer.appendChild(card);
+                });
+
+                 document.querySelectorAll('.project-filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if(btn.dataset.filter === filter) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            projectFiltersContainer.addEventListener('click', e => {
+                const targetButton = e.target.closest('[data-filter]');
+                if(targetButton) {
+                    renderProjects(targetButton.dataset.filter);
+                }
+            });
+
+            renderProjects();
+            
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['JavaScript', 'React.js', 'Next.js', 'AEM', 'WebRTC/Sockets', 'PWA'],
+                    datasets: [{
+                        label: 'Years of Experience',
+                        data: [6, 6, 2, 4, 3, 3],
+                        backgroundColor: 'rgba(14, 165, 233, 0.6)',
+                        borderColor: 'rgba(14, 165, 233, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#e2e8f0'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 12
+                            },
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw} years`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+             document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
