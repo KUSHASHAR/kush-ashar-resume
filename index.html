@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kush Ashar - Technical Lead Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +22,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: #f8fafc; /* light slate-50 */
+            color: #1e293b; /* slate-900 */
         }
         .chart-container {
             position: relative;
@@ -38,129 +39,138 @@
                 height: 400px;
             }
         }
-        .nav-link {
-            transition: color 0.3s;
-        }
         .nav-link:hover {
-            color: #0ea5e9;
+            color: var(--bs-info) !important; /* Use Bootstrap's info color */
         }
         .timeline-item-title.active {
-            color: #0ea5e9;
+            color: var(--bs-info) !important; /* Use Bootstrap's info color */
         }
         .project-filter-btn.active {
-            background-color: #0ea5e9;
-            color: #ffffff;
+            background-color: var(--bs-info) !important; /* Use Bootstrap's info color */
+            color: #ffffff !important;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-slate-800">
-                Kush Ashar
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#journey" class="nav-link font-medium">Journey</a>
-                <a href="#portfolio" class="nav-link font-medium">Portfolio</a>
-                <a href="#skills" class="nav-link font-medium">Skills</a>
-                <a href="#contact" class="nav-link font-medium">Contact</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    <header class="bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white py-3">
+            <div class="container">
+                <a class="navbar-brand fs-4 fw-bold text-dark" href="#">Kush Ashar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link fw-medium mx-2" href="#journey">Journey</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-medium mx-2" href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-medium mx-2" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-medium mx-2" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#journey" class="block py-2 px-6 text-sm hover:bg-slate-100">Journey</a>
-            <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-slate-100">Portfolio</a>
-            <a href="#skills" class="block py-2 px-6 text-sm hover:bg-slate-100">Skills</a>
-            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-slate-100">Contact</a>
-        </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container py-5">
 
-        <section id="hero" class="text-center py-16">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800 mb-4">Technical Lead Developer</h1>
-            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+        <section id="hero" class="text-center py-5">
+            <h1 class="display-4 fw-bolder text-dark mb-3">Technical Lead Developer</h1>
+            <p class="lead text-secondary mx-auto" style="max-width: 800px;">
                 Transforming complex problems into elegant, high-performance web applications. Specializing in React.js, AEM, and building future-ready solutions.
             </p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-3xl font-bold text-sky-500">6+</h3>
-                    <p class="text-slate-500 mt-1">Years of Experience</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-3xl font-bold text-sky-500">50+</h3>
-                    <p class="text-slate-500 mt-1">Professionals Trained</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-3xl font-bold text-sky-500">10+</h3>
-                    <p class="text-slate-500 mt-1">Enterprise Projects</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="journey" class="py-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Career Journey</h2>
-                <p class="text-slate-500 mt-2">From foundational development to technical leadership at DEPT Agency.</p>
-            </div>
-            <div class="flex flex-col md:flex-row gap-8 lg:gap-16">
-                <div class="md:w-1/3">
-                    <div id="timeline-buttons" class="space-y-4">
+            <div class="mt-5 row justify-content-center g-4" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div class="col-12 col-md-4">
+                    <div class="card p-4 rounded-3 shadow-sm">
+                        <h3 class="fs-2 fw-bold text-info">6+</h3>
+                        <p class="text-muted mt-1">Years of Experience</p>
                     </div>
                 </div>
-                <div class="md:w-2/3 bg-white p-8 rounded-xl shadow-lg">
-                    <div id="timeline-details">
+                <div class="col-12 col-md-4">
+                    <div class="card p-4 rounded-3 shadow-sm">
+                        <h3 class="fs-2 fw-bold text-info">50+</h3>
+                        <p class="text-muted mt-1">Professionals Trained</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card p-4 rounded-3 shadow-sm">
+                        <h3 class="fs-2 fw-bold text-info">10+</h3>
+                        <p class="text-muted mt-1">Enterprise Projects</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="py-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Project Portfolio</h2>
-                <p class="text-slate-500 mt-2">A selection of projects demonstrating expertise across various domains and technologies. Click the filters to explore.</p>
+        <section id="journey" class="py-5">
+            <div class="text-center mb-5">
+                <h2 class="fs-1 fw-bold">Career Journey</h2>
+                <p class="text-muted mt-2">From foundational development to technical leadership at DEPT Agency.</p>
             </div>
-            <div id="project-filters" class="flex flex-wrap justify-center gap-2 mb-8">
-            </div>
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="row g-4 g-lg-5">
+                <div class="col-md-4">
+                    <div id="timeline-buttons" class="d-flex flex-column gap-3">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card p-4 rounded-3 shadow-lg">
+                        <div id="timeline-details">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="skills" class="py-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Technical Skills</h2>
-                 <p class="text-slate-500 mt-2">A visualization of my experience with key technologies based on years of hands-on application.</p>
+        <section id="portfolio" class="py-5">
+            <div class="text-center mb-5">
+                <h2 class="fs-1 fw-bold">Project Portfolio</h2>
+                <p class="text-muted mt-2">A selection of projects demonstrating expertise across various domains and technologies. Click the filters to explore.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg">
+            <div id="project-filters" class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            </div>
+            <div id="project-grid" class="row g-4">
+            </div>
+        </section>
+
+        <section id="skills" class="py-5">
+            <div class="text-center mb-5">
+                <h2 class="fs-1 fw-bold">Technical Skills</h2>
+                 <p class="text-muted mt-2">A visualization of my experience with key technologies based on years of hands-on application.</p>
+            </div>
+            <div class="card p-4 rounded-3 shadow-lg">
                  <div class="chart-container">
                     <canvas id="skillsChart"></canvas>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="text-center py-16 bg-white rounded-xl shadow-lg">
-            <h2 class="text-3xl font-bold">Get In Touch</h2>
-            <p class="text-slate-500 mt-2 mb-6">Let's connect and discuss how I can bring value to your team.</p>
-            <div class="flex justify-center items-center space-x-6 text-lg">
-                 <span class="font-medium">ashar.kush.k@gmail.com</span>
-                 <span class="text-slate-300">|</span>
-                 <span class="font-medium">+91 7715001062</span>
+        <section id="contact" class="text-center py-5 bg-white rounded-3 shadow-lg">
+            <h2 class="fs-1 fw-bold">Get In Touch</h2>
+            <p class="text-muted mt-2 mb-4">Let's connect and discuss how I can bring value to your team.</p>
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 fs-5">
+                 <span class="fw-medium">ashar.kush.k@gmail.com</span>
+                 <span class="text-muted">|</span>
+                 <span class="fw-medium">+91 7715001062</span>
             </div>
-             <div class="mt-8">
-                <p class="text-slate-500">Certified: <span class="font-semibold text-slate-700">Adobe Certified Expert - AEM Sites Developer</span></p>
+             <div class="mt-4">
+                <p class="text-muted">Certified: <span class="fw-semibold text-dark">Adobe Certified Expert - AEM Sites Developer</span></p>
              </div>
         </section>
     </main>
 
-    <footer class="text-center py-6 mt-12 border-t border-slate-200">
-        <p class="text-slate-500 text-sm">Interactive Resume for Kush Ashar | Built with passion and code.</p>
+    <footer class="text-center py-4 mt-5 border-top border-light">
+        <p class="text-muted small">Interactive Resume for Kush Ashar | Built with passion and code.</p>
     </footer>
 
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -225,10 +235,10 @@
                 const data = timelineData[key];
                 const button = document.createElement('button');
                 button.setAttribute('data-timeline', key);
-                button.className = 'w-full text-left p-4 rounded-lg transition-all duration-300 bg-white hover:bg-slate-50 shadow-sm';
+                button.className = 'btn btn-light text-start p-3 rounded shadow-sm';
                 button.innerHTML = `
-                    <h3 class="font-bold text-lg timeline-item-title">${data.role}</h3>
-                    <p class="text-sm text-slate-500">${data.period}</p>
+                    <h3 class="fs-5 fw-bold timeline-item-title">${data.role}</h3>
+                    <p class="small text-muted mb-0">${data.period}</p>
                 `;
                 timelineButtonsContainer.appendChild(button);
             });
@@ -238,20 +248,18 @@
                 if (!data) return;
 
                 document.querySelectorAll('[data-timeline]').forEach(btn => {
-                    btn.classList.remove('bg-sky-50', 'ring-2', 'ring-sky-200');
-                    btn.querySelector('.timeline-item-title').classList.remove('active');
+                    btn.classList.remove('btn-info', 'active');
                 });
                 
                 const activeButton = document.querySelector(`[data-timeline="${key}"]`);
-                activeButton.classList.add('bg-sky-50', 'ring-2', 'ring-sky-200');
-                activeButton.querySelector('.timeline-item-title').classList.add('active');
+                activeButton.classList.add('btn-info', 'active');
 
                 timelineDetailsContainer.innerHTML = `
-                    <h3 class="text-2xl font-bold text-slate-800">${data.role}</h3>
-                    <p class="text-sm font-medium text-slate-500 mb-4">${data.period} at ${data.company}</p>
-                    <p class="text-slate-600 mb-6">${data.description}</p>
-                    <ul class="space-y-3">
-                        ${data.points.map(point => `<li class="flex items-start"><span class="text-sky-500 mr-3 mt-1">&#10003;</span><span>${point}</span></li>`).join('')}
+                    <h3 class="fs-4 fw-bold text-dark">${data.role}</h3>
+                    <p class="small fw-medium text-muted mb-3">${data.period} at ${data.company}</p>
+                    <p class="text-secondary mb-4">${data.description}</p>
+                    <ul class="list-unstyled mb-0">
+                        ${data.points.map(point => `<li class="d-flex align-items-start mb-2"><span class="text-info me-3 mt-1">&#10003;</span><span>${point}</span></li>`).join('')}
                     </ul>
                 `;
             }
@@ -274,7 +282,7 @@
                 const button = document.createElement('button');
                 button.textContent = category;
                 button.setAttribute('data-filter', category);
-                button.className = 'project-filter-btn px-4 py-2 text-sm font-medium rounded-full bg-white text-slate-700 hover:bg-sky-100 transition-colors shadow-sm';
+                button.className = 'project-filter-btn btn btn-light btn-sm rounded-pill shadow-sm';
                 projectFiltersContainer.appendChild(button);
             });
 
@@ -283,14 +291,17 @@
                 const filteredProjects = filter === 'All' ? projectData : projectData.filter(p => p.category === filter);
                 
                 filteredProjects.forEach(project => {
+                    const col = document.createElement('div');
+                    col.className = 'col-12 col-md-6 col-lg-4';
                     const card = document.createElement('div');
-                    card.className = 'bg-white p-6 rounded-xl shadow-lg transition-transform hover:scale-105';
+                    card.className = 'card p-4 rounded-3 shadow-lg h-100';
                     card.innerHTML = `
-                        <span class="inline-block px-3 py-1 text-xs font-semibold text-sky-800 bg-sky-100 rounded-full mb-3">${project.category}</span>
-                        <h3 class="font-bold text-xl mb-2">${project.title}</h3>
-                        <p class="text-slate-600 text-sm">${project.description}</p>
+                        <span class="badge bg-info-subtle text-info fw-semibold mb-3">${project.category}</span>
+                        <h3 class="fw-bold fs-5 mb-2">${project.title}</h3>
+                        <p class="text-secondary small mb-0">${project.description}</p>
                     `;
-                    projectGridContainer.appendChild(card);
+                    col.appendChild(card);
+                    projectGridContainer.appendChild(col);
                 });
 
                  document.querySelectorAll('.project-filter-btn').forEach(btn => {
@@ -318,8 +329,8 @@
                     datasets: [{
                         label: 'Years of Experience',
                         data: [6, 6, 2, 4, 3, 3],
-                        backgroundColor: 'rgba(14, 165, 233, 0.6)',
-                        borderColor: 'rgba(14, 165, 233, 1)',
+                        backgroundColor: 'rgba(13, 202, 240, 0.6)', /* Bootstrap info color with opacity */
+                        borderColor: 'rgba(13, 202, 240, 1)', /* Bootstrap info color */
                         borderWidth: 1
                     }]
                 },
@@ -331,7 +342,7 @@
                         x: {
                             beginAtZero: true,
                             grid: {
-                                color: '#e2e8f0'
+                                color: '#e2e8f0' /* slate-200 */
                             }
                         },
                         y: {
@@ -345,7 +356,7 @@
                             display: false
                         },
                         tooltip: {
-                            backgroundColor: '#1e293b',
+                            backgroundColor: '#1e293b', /* slate-900 */
                             titleFont: {
                                 size: 14,
                                 weight: 'bold'
@@ -363,14 +374,23 @@
                 }
             });
             
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+            // Bootstrap's way to handle mobile menu
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.getElementById('navbarNav');
+
+            navbarToggler.addEventListener('click', () => {
+                // Bootstrap handles the class toggling for collapse, no manual 'hidden' needed
             });
-             document.querySelectorAll('#mobile-menu a').forEach(link => {
+
+            // Close mobile menu when a nav link is clicked
+            document.querySelectorAll('#navbarNav .nav-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    }
                 });
             });
 
